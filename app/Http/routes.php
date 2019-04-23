@@ -11,6 +11,20 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/welcome', function () {
     return view('welcome');
 });
+
+
+// App Specific Routes
+
+
+Route::get('/', 'DashboardController@login');
+Route::post('/login', 'DashboardController@postLogin')->name('login');
+Route::get('/Profile', 'DashboardController@profile');
+Route::get('/Dashboard', 'DashboardController@index');
+Route::post('/Dashboard/credential', 'DashboardController@storeCredential');
+Route::post('/Dashboard/profile', 'DashboardController@storeProfile');
+Route::post('/Dashboard/post', 'DashboardController@post');
+
+Route::get('/Expenses/{session_id}', 'ExpenseController@index');
